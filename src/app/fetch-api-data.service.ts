@@ -4,11 +4,11 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-const apiUrl = 'https://myapiflix.herokuapp.com';
+const apiUrl = 'https://myapiflix.herokuapp.com/';
 
-const token = localStorage.getItem('token');
+// const token = localStorage.getItem('token');
 // Get username from localStorage for URLs
-const username = localStorage.getItem('username');
+// const username = localStorage.getItem('username');
 
 @Injectable({
   providedIn: 'root'
