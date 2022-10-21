@@ -1,0 +1,41 @@
+.navbar {
+	position: sticky;
+	top: 0;
+	width: 100%;
+	z-index: 100;
+	background: rgb(3, 41, 234);
+    box-shadow: 10px 5px 5px black;
+}
+
+.nav-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 12px;
+}
+.app-title {
+	font-size: 22px;
+	margin-left: 30px;
+	font-weight: bold;
+	letter-spacing: 2px;
+	color: rgb(254, 223, 234)
+}
+
+button {
+	font-size: 17px;
+	letter-spacing: 1px;
+	color: #fff;
+	font-weight: 700;
+}
+
+.logout {
+	color: rgb(254, 0, 30);
+}
+
+.nav-links {
+	margin-right: 35px;
+
+	.profile {
+		color: rgb(254, 223, 234)
+	}
+}

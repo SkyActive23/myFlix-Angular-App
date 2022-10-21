@@ -1,0 +1,53 @@
+.movie-view {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 50 0;
+    margin-left: 5px;
+  }
+
+.mat-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    box-shadow: 10px 5px 5px black;
+    background-color: rgb(119, 128, 255);
+    max-width: 280px;
+    width: 280px;
+    margin: 15px;
+    padding: 20px 30px;
+  }
+
+    .mat-button {
+        border: black solid 2px;
+        background-color: antiquewhite;
+        box-shadow: 10px 5px 5px black;
+    }
+
+    .mat-icon-button {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+    }
+
+    img {
+        height: 400px;
+        width: 200px;
+        object-fit: contain;
+    }
+  
+    .button-selections {
+        margin-right: 30px;
+        font-size: 1.1em;
+        background: rgb(254, 0, 91);
+        color: rgb(253, 221, 233);
+    }
+  
+    .button-selections:hover {
+        background-color: rgb(119, 128, 255);
+	    color: rgb(3, 41, 234);
+    }
+

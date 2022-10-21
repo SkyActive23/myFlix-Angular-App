@@ -1,0 +1,25 @@
+.director-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+    background-color: rgb(119, 128, 255);
+    box-shadow: 10px 5px 5px black;
+}
+
+.director-content {
+	line-height: 2;
+	max-height: 300px;
+	overflow-y: auto;
+}
+
+@media all and (min-width: 768px) {
+	.director-container {
+		max-width: 400px;
+	}
+}
+
+@media all and (min-width: 768px) {
+	.director-container {
+		max-width: 600px;
+	}
+}
