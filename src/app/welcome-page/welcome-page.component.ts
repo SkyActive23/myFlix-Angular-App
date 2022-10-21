@@ -20,9 +20,9 @@ export class WelcomePageComponent implements OnInit {
       width: '280px'
     });
   }
-openUserLoginDialog(): void {
-    this.dialog.open(UserLoginFormComponent, {
-      width: '280px'
-    });
+  openUserLoginDialog(): void {
+      this.dialog.open(UserLoginFormComponent, {
+        width: '280px'
+      });
   }
 }
