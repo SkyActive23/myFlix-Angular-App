@@ -7,6 +7,11 @@
     margin-left: 5px;
   }
 
+.mat-card-subtitle {
+    padding: 20px 0 0 0;
+    color: #fff;
+}
+
 .mat-card {
     display: flex;
     flex-direction: column;
@@ -16,9 +21,10 @@
     box-shadow: 10px 5px 5px black;
     background-color: rgb(119, 128, 255);
     max-width: 280px;
-    width: 280px;
+    width: 250px;
     margin: 15px;
     padding: 20px 30px;
+    text-align: center;
   }
 
     .mat-button {
@@ -37,13 +43,6 @@
         height: 400px;
         width: 200px;
         object-fit: contain;
-    }
-  
-    .button-selections {
-        margin-right: 30px;
-        font-size: 1.1em;
-        background: rgb(254, 0, 91);
-        color: rgb(253, 221, 233);
     }
   
     .button-selections:hover {

@@ -76,6 +76,21 @@ export class FetchApiDataService {
     );
   }
 
+    getGenre(name: any): Observable<any> {
+      // Get Authorization token stored in local storage
+      const token = localStorage.getItem('token');
+      return this.http
+        .get(apiUrl + `movies/genre/${name}`, {
+          headers: new HttpHeaders({
+            Authorization: 'Bearer ' + token,
+          })
+        })
+        .pipe(
+          map(this.extractResponseData),
+          catchError(this.handleError)
+        );
+    }
+
   //Select User Info (Get) 
   getUser(): Observable<any> {
     const token = localStorage.getItem('token');

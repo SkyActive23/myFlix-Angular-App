@@ -49,6 +49,7 @@ export class MovieCardComponent implements OnInit {
       data: {
         Title: title,
         Description: description,
+        Genre: name,
       },
     });
   }

@@ -1,11 +1,10 @@
 <app-navbar></app-navbar>
-<div style="display: flex">
+<div class="movie-view" style="display: flex">
   <mat-card *ngFor="let movie of movies" style="flex: 1 1 auto">
     <mat-card-header>
       <mat-card-title>{{ movie.Title }}</mat-card-title>
-      <mat-card-subtitle
-        >Directed by: {{ movie.Director.Name }}</mat-card-subtitle
-      >
+      <mat-card-subtitle>Genre: {{ movie.Genre.Name }}</mat-card-subtitle>
+      <mat-card-subtitle>Director: {{ movie.Director.Name }}</mat-card-subtitle>
     </mat-card-header>
     <img src="{{ movie.ImageURL }}" alt="{{ movie.Title }}" />
     <mat-card-actions>
