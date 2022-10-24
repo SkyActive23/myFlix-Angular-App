@@ -29,4 +29,24 @@
       </button>
     </mat-card-actions>
   </mat-card>
+  <div class="fav_list">
+    <div><h2>Favorite Movie List</h2></div>
+    <div *ngFor="let movie of favs">
+      <mat-card *ngFor="let movie of movies" style="flex: 1 1 auto">
+        <mat-card-header>
+          <mat-card-title>{{ movie.Title }}</mat-card-title>
+          <mat-card-subtitle>Genre: {{ movie.Genre.Name }}</mat-card-subtitle>
+          <mat-card-subtitle
+            >Director: {{ movie.Director.Name }}</mat-card-subtitle
+          >
+        </mat-card-header>
+        <img src="{{ movie.ImageURL }}" alt="{{ movie.Title }}" />
+        <mat-card-actions>
+          <button mat-raised-button (click)="removeFav(movie._id)">
+            Remove Fav
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
 </div>

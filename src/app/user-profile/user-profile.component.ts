@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
 export class UserProfileComponent implements OnInit {
   user: any = {};
   movies: any = [];
-  favorites: any = [];
+  favs: any = [];
 
 
   constructor(
@@ -36,7 +36,8 @@ export class UserProfileComponent implements OnInit {
     this.fetchApiData.getUser().subscribe((resp: any) => {
       this.user = resp;
       console.log(this.user);
-      return this.user;
+      this.getFavs();
+      console.log(this.getFavs())
     })
   }
 
@@ -59,4 +60,32 @@ export class UserProfileComponent implements OnInit {
       });
     }
   }
+
+    /**
+   * Filters out movies that aren't in favs
+   */
+     getFavs(): void {
+      this.fetchApiData.getAllMovies().subscribe((res: any) => {
+        this.favs = res.filter((movie: any) => {
+          return this.user.FavouriteMovies.includes(movie._id)
+        });
+        console.log(this.favs);
+        return this.favs;
+      })
+    }
+  
+    /**
+     * Allows user to remove movie from favs
+     * @param id 
+     */
+    removeFav(id: string): void {
+      this.fetchApiData.removeFavoriteMovie(id).subscribe((res: any) => {
+        this.snackBar.open('Successfully removed from favorite movies.', 'OK', {
+          duration: 2000,
+        });
+        this.ngOnInit();
+        return this.favs;
+      })
+    }
+
 }

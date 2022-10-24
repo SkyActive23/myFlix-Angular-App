@@ -22,17 +22,22 @@
       >
         Synopsis
       </button>
-      <button
-        matTooltip="Favorite movie"
-        matTooltipPosition="above"
-        mat-icon-button
-        (click)="onToggleFavoriteMovie(movie._id)"
-      >
-        <mat-icon color="warn">
-          <span *ngIf="isFav(movie._id); else elseBlock">star</span>
-          <ng-template #elseBlock>favorite_border</ng-template>
+      <div>
+        <mat-icon
+          color="warn"
+          *ngIf="!isFav(movie.id)"
+          (click)="handleFavorite(movie._id)"
+        >
+          favorite_border
         </mat-icon>
-      </button>
+        <mat-icon
+          color="warn"
+          *ngIf="isFav(movie.id)"
+          (click)="handleUnfavorite(movie._id)"
+        >
+          favorite
+        </mat-icon>
+      </div>
     </mat-card-actions>
   </mat-card>
 </div>

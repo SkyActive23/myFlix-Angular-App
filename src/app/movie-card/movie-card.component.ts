@@ -14,7 +14,7 @@ import { SynopsisComponent } from '../synopsis/synopsis.component';
 export class MovieCardComponent implements OnInit {
 
   movies: any[] = [];
-  favorites: any[] = [];
+  favs: any[] = [];
 
   constructor(
     public fetchApiData: FetchApiDataService,
@@ -22,14 +22,21 @@ export class MovieCardComponent implements OnInit {
     public snackBar: MatSnackBar
   ) { }
 
+  /**
+   * Gets all the movies using API service and populate local state variable
+   * @returns array of movies objects
+   * @function getMovies
+   */
   ngOnInit(): void {
-    this.fetchApiData.getAllMovies().subscribe((resp: any) => {
-      this.movies = resp;
-      console.log(this.movies);
-      return this.movies;
-    });
+    this.getMovies();
+    this.getFavs();
   }
 
+  /**
+   * Opens the director dialog from DirectorComponent
+   * @param name: string[]
+   * @function openDirectorDialog
+   */
   openDirectorDialog(name: string, bio: string): void {
     this.dialog.open(MovieDirectorComponent, {
       data: { name, bio },
@@ -44,6 +51,12 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   * Opens the synopsys dialog from SynopsysComponent
+   * @param title
+   * @param description
+   * @function openSynopsisDialog
+   */
   openSynopsisDialog(title: string, description: string): void {
     this.dialog.open(SynopsisComponent, {
       data: {
@@ -54,26 +67,56 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
-  onToggleFavoriteMovie(id: string): any {
-    if (this.isFav(id)) {
-      this.fetchApiData.removeFavoriteMovie(id).subscribe((resp: any) => {
-        this.snackBar.open('Removed from favorites!', 'OK', {
-          duration: 2000,
-        });
-      });
-      const index = this.favorites.indexOf(id);
-      return this.favorites.splice(index, 1);
-    } else {
-      this.fetchApiData.addFavoriteMovie(id).subscribe((response: any) => {
-        this.snackBar.open('Added to favorites!', 'OK', {
-          duration: 2000,
-        });
-      });
-    }
-    return this.favorites.push(id);
+  /**
+   * Get users favorite movies
+   */
+   getFavs(): void {
+    this.fetchApiData.getUser().subscribe((resp: any) => {
+      this.favs = resp.FavoriteMovies;
+      console.log("HELLO THIS FAVS", this.favs);
+      return this.favs;
+    });
   }
 
-  isFav(id: string): boolean {
-    return this.favorites.includes(id)
+  /**
+   * Checks if movie if favorited
+   * @param id 
+   * @returns 
+   */
+   isFav(id: string): boolean {
+    return this.favs.includes(id);
+  }
+
+  /**
+   * Add a movie to the list of favorite movies using API service
+   * @param id
+   * @function addToFavoriteMovies
+   */
+
+  /**
+   * Adds a favorite movie
+   * @param id 
+   */
+   handleFavorite(id: string): void {
+    this.fetchApiData.addFavoriteMovie(id).subscribe(() => {
+      this.getFavs();
+      this.snackBar.open('Movie was successfully added to favorites', 'OK', {
+        duration: 2000
+      });
+      console.log(this.getFavs())
+    })
+  }
+
+  /**
+   * Deletes a favorite movie
+   * @param id 
+   */
+  handleUnfavorite(id: string): void {
+    this.fetchApiData.removeFavoriteMovie(id).subscribe(() => {
+      this.getFavs();
+      this.snackBar.open('Movie was successfully removed from favorites', 'OK', {
+        duration: 2000
+      });
+    })
   }
 }

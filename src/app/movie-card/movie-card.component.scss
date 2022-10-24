@@ -27,7 +27,7 @@
     text-align: center;
   }
 
-    .mat-button {
+    .detailbutton {
         border: black solid 2px;
         background-color: antiquewhite;
         box-shadow: 10px 5px 5px black;
@@ -40,13 +40,10 @@
     }
 
     img {
-        height: 400px;
-        width: 200px;
+        width: 250px;
+        height: 350px;
         object-fit: contain;
     }
   
-    .button-selections:hover {
-        background-color: rgb(119, 128, 255);
-	    color: rgb(3, 41, 234);
-    }
+    
 
